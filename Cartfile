@@ -1,0 +1,2 @@
+github "uber/RIBs" ~> 0.9
+github "ReactiveX/RxSwift" ~> 5.0
