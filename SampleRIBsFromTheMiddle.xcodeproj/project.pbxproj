@@ -24,6 +24,10 @@
 		17609DC7241E73A5008B2A59 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17609DBF241E73A5008B2A59 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17609DCA241E7A7A008B2A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17609DC9241E7A7A008B2A59 /* Main.storyboard */; };
 		17609DCC241E7C10008B2A59 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17609DCB241E7C10008B2A59 /* SecondViewController.swift */; };
+		17609E5C241E8E8A008B2A59 /* SampleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17609E58241E8E8A008B2A59 /* SampleRouter.swift */; };
+		17609E5D241E8E8A008B2A59 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17609E59241E8E8A008B2A59 /* SampleViewController.swift */; };
+		17609E5E241E8E8A008B2A59 /* SampleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17609E5A241E8E8A008B2A59 /* SampleBuilder.swift */; };
+		17609E5F241E8E8A008B2A59 /* SampleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17609E5B241E8E8A008B2A59 /* SampleInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,10 @@
 		17609DBF241E73A5008B2A59 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		17609DC9241E7A7A008B2A59 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		17609DCB241E7C10008B2A59 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		17609E58241E8E8A008B2A59 /* SampleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleRouter.swift; sourceTree = "<group>"; };
+		17609E59241E8E8A008B2A59 /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
+		17609E5A241E8E8A008B2A59 /* SampleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBuilder.swift; sourceTree = "<group>"; };
+		17609E5B241E8E8A008B2A59 /* SampleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +151,7 @@
 				17609D96241E7048008B2A59 /* LaunchScreen.storyboard */,
 				17609D99241E7048008B2A59 /* Info.plist */,
 				17609DC9241E7A7A008B2A59 /* Main.storyboard */,
+				17609E4C241E87D7008B2A59 /* RIBs */,
 			);
 			path = SampleRIBsFromTheMiddle;
 			sourceTree = "<group>";
@@ -174,6 +183,25 @@
 				17609DBE241E73A5008B2A59 /* RxSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		17609E4C241E87D7008B2A59 /* RIBs */ = {
+			isa = PBXGroup;
+			children = (
+				17609E57241E8E78008B2A59 /* Sample */,
+			);
+			path = RIBs;
+			sourceTree = "<group>";
+		};
+		17609E57241E8E78008B2A59 /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				17609E58241E8E8A008B2A59 /* SampleRouter.swift */,
+				17609E59241E8E8A008B2A59 /* SampleViewController.swift */,
+				17609E5A241E8E8A008B2A59 /* SampleBuilder.swift */,
+				17609E5B241E8E8A008B2A59 /* SampleInteractor.swift */,
+			);
+			path = Sample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,9 +336,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17609E5C241E8E8A008B2A59 /* SampleRouter.swift in Sources */,
 				17609DCC241E7C10008B2A59 /* SecondViewController.swift in Sources */,
+				17609E5D241E8E8A008B2A59 /* SampleViewController.swift in Sources */,
 				17609D90241E7047008B2A59 /* ViewController.swift in Sources */,
 				17609D8C241E7047008B2A59 /* AppDelegate.swift in Sources */,
+				17609E5E241E8E8A008B2A59 /* SampleBuilder.swift in Sources */,
+				17609E5F241E8E8A008B2A59 /* SampleInteractor.swift in Sources */,
 				17609D8E241E7047008B2A59 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
