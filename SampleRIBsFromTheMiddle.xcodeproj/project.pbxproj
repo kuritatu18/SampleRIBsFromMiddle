@@ -23,6 +23,7 @@
 		17609DC6241E73A5008B2A59 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17609DBF241E73A5008B2A59 /* RxCocoa.framework */; };
 		17609DC7241E73A5008B2A59 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17609DBF241E73A5008B2A59 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17609DCA241E7A7A008B2A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17609DC9241E7A7A008B2A59 /* Main.storyboard */; };
+		17609DCC241E7C10008B2A59 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17609DCB241E7C10008B2A59 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		17609DBE241E73A5008B2A59 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		17609DBF241E73A5008B2A59 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		17609DC9241E7A7A008B2A59 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		17609DCB241E7C10008B2A59 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				17609D8B241E7047008B2A59 /* AppDelegate.swift */,
 				17609D8D241E7047008B2A59 /* SceneDelegate.swift */,
 				17609D8F241E7047008B2A59 /* ViewController.swift */,
+				17609DCB241E7C10008B2A59 /* SecondViewController.swift */,
 				17609D94241E7048008B2A59 /* Assets.xcassets */,
 				17609D96241E7048008B2A59 /* LaunchScreen.storyboard */,
 				17609D99241E7048008B2A59 /* Info.plist */,
@@ -305,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17609DCC241E7C10008B2A59 /* SecondViewController.swift in Sources */,
 				17609D90241E7047008B2A59 /* ViewController.swift in Sources */,
 				17609D8C241E7047008B2A59 /* AppDelegate.swift in Sources */,
 				17609D8E241E7047008B2A59 /* SceneDelegate.swift in Sources */,
