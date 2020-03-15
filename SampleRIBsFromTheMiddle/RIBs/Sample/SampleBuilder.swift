@@ -9,13 +9,14 @@
 import RIBs
 
 protocol SampleDependency: Dependency {
-    // TODO: Declare the set of dependencies required by this RIB, but cannot be
-    // created by this RIB.
+    var displayMessage: String { get }
 }
 
 final class SampleComponent: Component<SampleDependency> {
 
-    // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    fileprivate var displayMessage: String {
+        dependency.displayMessage
+    }
 }
 
 // MARK: - Builder
@@ -33,7 +34,8 @@ final class SampleBuilder: Builder<SampleDependency>, SampleBuildable {
     func build(withListener listener: SampleListener) -> SampleRouting {
         let component = SampleComponent(dependency: dependency)
         let viewController = SampleViewController()
-        let interactor = SampleInteractor(presenter: viewController)
+        let interactor = SampleInteractor(presenter: viewController,
+                                          displayMessage: component.displayMessage)
         interactor.listener = listener
         return SampleRouter(interactor: interactor, viewController: viewController)
     }

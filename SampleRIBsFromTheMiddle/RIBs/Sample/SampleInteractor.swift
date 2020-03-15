@@ -15,32 +15,42 @@ protocol SampleRouting: ViewableRouting {
 
 protocol SamplePresentable: Presentable {
     var listener: SamplePresentableListener? { get set }
-    // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func show(displayMessage: String)
 }
 
 protocol SampleListener: class {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func show(displayMessage: String)
 }
 
 final class SampleInteractor: PresentableInteractor<SamplePresentable>, SampleInteractable, SamplePresentableListener {
-
     weak var router: SampleRouting?
     weak var listener: SampleListener?
+    
+    private let displayMessage: String
 
-    // TODO: Add additional dependencies to constructor. Do not perform any logic
-    // in constructor.
-    override init(presenter: SamplePresentable) {
+    init(presenter: SamplePresentable,
+         displayMessage: String) {
+        self.displayMessage = displayMessage
         super.init(presenter: presenter)
         presenter.listener = self
     }
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        // TODO: Implement business logic here.
+        
+        presenter.show(displayMessage: displayMessage)
     }
 
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+}
+
+// MARK: - SamplePresentableListener
+extension SampleInteractor {
+    func didTapButton() {
+        listener?.show(displayMessage: displayMessage)
     }
 }
