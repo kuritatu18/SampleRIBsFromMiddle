@@ -9,9 +9,11 @@
 import RIBs
 import RxSwift
 import UIKit
+import RxCocoa
 
 protocol SamplePresentableListener: class {
     func didTapButton()
+    func viewDidDisappear()
 }
 
 final class SampleViewController: UIViewController, SamplePresentable, SampleViewControllable {
@@ -27,9 +29,14 @@ final class SampleViewController: UIViewController, SamplePresentable, SampleVie
         setUpBindings()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        listener?.viewDidDisappear()
+    }
+    
     private func makeLayout() {
+        self.view.backgroundColor = UIColor.lightGray
         self.view.addSubview(self.button)
-        
         self.button.translatesAutoresizingMaskIntoConstraints = false
         self.button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         self.button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -46,7 +53,7 @@ final class SampleViewController: UIViewController, SamplePresentable, SampleVie
 
 // MARK: - SamplePresentable
 extension SampleViewController {
-    func show(displayMessage: String) {
-        self.button.setTitle(displayMessage, for: .normal)
+    func show(displayButtonText: String) {
+        self.button.setTitle(displayButtonText, for: .normal)
     }
 }

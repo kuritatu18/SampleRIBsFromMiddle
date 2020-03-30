@@ -10,47 +10,52 @@ import RIBs
 import RxSwift
 
 protocol SampleRouting: ViewableRouting {
-    // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
 }
 
 protocol SamplePresentable: Presentable {
     var listener: SamplePresentableListener? { get set }
-    
-    func show(displayMessage: String)
+
+    func show(displayButtonText: String)
 }
 
 protocol SampleListener: class {
-    func show(displayMessage: String)
+    func show(text: String)
+    func detachSample()
 }
 
 final class SampleInteractor: PresentableInteractor<SamplePresentable>, SampleInteractable, SamplePresentableListener {
     weak var router: SampleRouting?
     weak var listener: SampleListener?
-    
-    private let displayMessage: String
+
+    private let displayButtonText: String
 
     init(presenter: SamplePresentable,
-         displayMessage: String) {
-        self.displayMessage = displayMessage
+         displayButtonText: String) {
+        self.displayButtonText = displayButtonText
         super.init(presenter: presenter)
         presenter.listener = self
     }
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        
-        presenter.show(displayMessage: displayMessage)
+
+        presenter.show(displayButtonText: displayButtonText)
     }
 
     override func willResignActive() {
         super.willResignActive()
-        // TODO: Pause any business logic.
+
+        print("detached SampleRIB")
     }
 }
 
 // MARK: - SamplePresentableListener
 extension SampleInteractor {
     func didTapButton() {
-        listener?.show(displayMessage: displayMessage)
+        listener?.show(text: displayButtonText)
+    }
+
+    func viewDidDisappear() {
+        listener?.detachSample()
     }
 }

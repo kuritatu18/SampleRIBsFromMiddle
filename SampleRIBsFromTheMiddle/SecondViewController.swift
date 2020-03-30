@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 import RxSwift
 import RxCocoa
+import RIBs
 
 class SecondViewController: UIViewController {
     private let button = UIButton(type: .system)
     private let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: nil)
     private let disposeBag = DisposeBag()
+    private var sampleRouting: SampleRouting?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +42,7 @@ class SecondViewController: UIViewController {
     private func setUpBindings() {
         self.button.rx.tap.asSignal()
             .emit(onNext: { _ in
-                print("test")
+                self.routeToSample()
             })
             .disposed(by: disposeBag)
         
@@ -49,5 +51,44 @@ class SecondViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func routeToSample() {
+        let component = SecondViewControllerComponent()
+        let sampleBuilder = SampleBuilder(dependency: component)
+        let child = sampleBuilder.build(withListener: self)
+        child.interactable.activate()
+        child.load()
+        self.navigationController?.pushViewController(child.viewControllable.uiviewController, animated: true)
+        self.sampleRouting = child
+    }
+}
+
+// MARK: - SampleListener
+extension SecondViewController: SampleListener {
+    func show(text: String) {
+        print(text)
+        self.closeSample()
+    }
+    
+    func detachSample() {
+        guard let sampleRouting = self.sampleRouting else {
+            return
+        }
+        sampleRouting.interactable.deactivate()
+        self.sampleRouting = nil
+    }
+    
+    private func closeSample() {
+        self.navigationController?.popViewController(animated: true)
+        self.detachSample()
+    }
+}
+
+class SecondViewControllerComponent: Component<EmptyDependency>, SampleDependency {
+    var displayButtonText: String
+    init() {
+        self.displayButtonText = "SampleRIBsFromMiddle"
+        super.init(dependency: EmptyComponent())
     }
 }

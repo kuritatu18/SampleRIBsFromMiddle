@@ -9,13 +9,13 @@
 import RIBs
 
 protocol SampleDependency: Dependency {
-    var displayMessage: String { get }
+    var displayButtonText: String { get }
 }
 
 final class SampleComponent: Component<SampleDependency> {
 
-    fileprivate var displayMessage: String {
-        dependency.displayMessage
+    fileprivate var displayButtonText: String {
+        dependency.displayButtonText
     }
 }
 
@@ -26,7 +26,6 @@ protocol SampleBuildable: Buildable {
 }
 
 final class SampleBuilder: Builder<SampleDependency>, SampleBuildable {
-
     override init(dependency: SampleDependency) {
         super.init(dependency: dependency)
     }
@@ -35,7 +34,7 @@ final class SampleBuilder: Builder<SampleDependency>, SampleBuildable {
         let component = SampleComponent(dependency: dependency)
         let viewController = SampleViewController()
         let interactor = SampleInteractor(presenter: viewController,
-                                          displayMessage: component.displayMessage)
+                                          displayButtonText: component.displayButtonText)
         interactor.listener = listener
         return SampleRouter(interactor: interactor, viewController: viewController)
     }
