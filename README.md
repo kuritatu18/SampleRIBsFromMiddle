@@ -1,0 +1,1 @@
+[RIBs architecture](https://github.com/uber/RIBs) をアプリケーションの途中から適用する SampleProject
