@@ -54,7 +54,7 @@ class SecondViewController: UIViewController {
     }
     
     private func routeToSample() {
-        let component = SecondViewControllerComponent()
+        let component = SecondComponent()
         let sampleBuilder = SampleBuilder(dependency: component)
         let child = sampleBuilder.build(withListener: self)
         child.interactable.activate()
@@ -82,13 +82,5 @@ extension SecondViewController: SampleListener {
     private func closeSample() {
         self.navigationController?.popViewController(animated: true)
         self.detachSample()
-    }
-}
-
-class SecondViewControllerComponent: Component<EmptyDependency>, SampleDependency {
-    var displayButtonText: String
-    init() {
-        self.displayButtonText = "SampleRIBsFromMiddle"
-        super.init(dependency: EmptyComponent())
     }
 }
