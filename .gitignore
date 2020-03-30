@@ -1,0 +1,11 @@
+## Build generated
+build/
+DerivedData/
+xcuserdata/
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+
+## Others
+.DS_Store
